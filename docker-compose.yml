@@ -1,0 +1,27 @@
+version: "3.8"
+
+services:
+
+  n8n:
+    image:
+      n8nio/n8n
+    ports:
+      - "5678:5678"
+    environment:
+      - TZ=America/Bogota
+    volumes:
+      - ./n8n-data:/home/node/.n8n
+    depends_on:
+      - ollama
+
+  ollama:
+    image:
+      ollama/ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama-data:/root/.ollama
+
+volumes:
+  ollama-data:
+

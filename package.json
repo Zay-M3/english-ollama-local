@@ -1,0 +1,11 @@
+{
+  "name": "n8n-project",
+  "version": "1.0.0",
+  "description": "n8n-project",
+  "main": "app",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "",
+  "license": "MIT"
+}
