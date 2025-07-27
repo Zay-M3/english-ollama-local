@@ -1,7 +1,7 @@
 from pydantic import BaseModel
 
-class promtRequest(BaseModel):
+class PromptRequest(BaseModel):
     prompt: str
 
-class promtResponse(BaseModel):
-    response :str
+class PromptResponse(BaseModel):
+    response: str
