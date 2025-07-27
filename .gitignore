@@ -1,35 +1,50 @@
-# Node.js
-node_modules/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-lerna-debug.log*
-.npm
-.yarn/
-.pnp
-.pnp.js
-
-# Environment variables
-.env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-venv
-.venv
-
-# n8n data directory (contains sensitive data and database)
+# ===== N8N DATA (DOCKER) =====
+# n8n data directory (contains workflows, credentials, database)
 n8n-data/
 !n8n-data/.gitkeep
 
-# Docker
-.docker/
-docker-compose.override.yml
+# ===== PYTHON/FASTAPI BACKEND =====
+# Virtual environments
+app/backend/venv/
+app/backend/.venv/
+venv/
+.venv/
+env/
 
-# Logs
+# Python cache
+app/backend/__pycache__/
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Python distributions  
+app/backend/dist/
+app/backend/build/
+*.egg-info/
+
+# ===== ENVIRONMENT & CONFIG =====
+.env
+.env.local
+.env.development
+.env.production
+.env.test
+
+# ===== DOCKER =====
+docker-compose.override.yml
+.docker/
+
+# ===== OLLAMA & AI =====
+ollama-data/
+models/
+.ollama/
+
+# ===== LOGS & DATABASE =====
 logs/
 *.log
 crash.journal
+database.sqlite
+n8nEventLog.log
 
 # Database files
 *.sqlite
