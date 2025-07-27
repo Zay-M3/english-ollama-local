@@ -15,6 +15,8 @@ lerna-debug.log*
 .env.development.local
 .env.test.local
 .env.production.local
+venv
+.venv
 
 # n8n data directory (contains sensitive data and database)
 n8n-data/
