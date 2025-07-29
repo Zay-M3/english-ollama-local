@@ -1,5 +1,6 @@
 from fastapi import APIRouter, WebSocket, WebSocketDisconnect
-
+from app.backend.services.fix_message import FixMessageService
+from app.backend.services.response import ResponseMessageService
 
 router = APIRouter()
 
@@ -8,9 +9,13 @@ async def websocket_chat(websocket: WebSocket):
     await websocket.accept()
     try:
         while True:
-            data = await websocket.receive_text()
-            print(f"Mensaje recibido: {data}")
-            await websocket.send_text(f"Mensaje recibido: {data}")
+            data = await websocket.receive_json()
+            if data['action'] == 'fix':
+                response_fix = await FixMessageService(data['message']).fix_message()
+                await websocket.send_json(response_fix)
+            elif data['action'] == 'response':
+                response_response = await ResponseMessageService(data['message']).respond()
+                await websocket.send_json(response_response)
     except WebSocketDisconnect:
         print("Cliente desconectado")
     except Exception as e:
