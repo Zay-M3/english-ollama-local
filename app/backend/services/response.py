@@ -1,4 +1,4 @@
-from app.backend.services.ollama import ask_llama_response
+from services.ollama import ask_llama_response
 
 message_response = {
     "type": "response",

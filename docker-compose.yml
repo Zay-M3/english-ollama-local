@@ -1,6 +1,18 @@
 version : "3.8"
 services:
 
+  backend:
+    build:
+      context: ./app/backend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - TZ=America/Bogota
+    volumes:
+      - ./app/backend:/app
+    depends_on:
+      - ollama
   n8n:
     image:
       n8nio/n8n

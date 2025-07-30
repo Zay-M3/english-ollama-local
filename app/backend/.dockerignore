@@ -1,0 +1,15 @@
+Dockerfile
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+venv/
+.env
+*.log
+*.sqlite
+*.db
+dist/
+build/
+*.egg-info/
+*.bak
+*.old

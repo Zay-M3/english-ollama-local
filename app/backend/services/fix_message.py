@@ -1,4 +1,4 @@
-from app.backend.services.ollama import ask_llama_fix
+from services.ollama import ask_llama_fix
 
 # diseño del mensaje
 fix_message = {

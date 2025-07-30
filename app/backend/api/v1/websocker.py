@@ -1,6 +1,6 @@
 from fastapi import APIRouter, WebSocket, WebSocketDisconnect
-from app.backend.services.fix_message import FixMessageService
-from app.backend.services.response import ResponseMessageService
+from services.fix_message import FixMessageService
+from services.response import ResponseMessageService
 
 router = APIRouter()
 
