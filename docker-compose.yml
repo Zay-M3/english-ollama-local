@@ -1,6 +1,20 @@
 version : "3.8"
 services:
 
+  client:
+    build:
+      context: ./app/client
+      dockerfile: Dockerfile
+    ports:
+      - "5173:5173"
+    environment:
+      - TZ=America/Bogota
+    volumes:
+      - ./app/client:/app
+      - /app/node_modules
+    depends_on:
+      - backend
+
   backend:
     build:
       context: ./app/backend
