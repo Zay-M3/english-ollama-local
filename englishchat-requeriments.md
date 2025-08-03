@@ -1,23 +1,31 @@
-# EnglisChat - Contexto del Proyecto
+
+# EnglisChat - Contexto y Requisitos para la IA
+
+Este documento sirve como contexto integral y referencia de requisitos para cualquier cambio automatizado o asistido por IA en el proyecto EnglisChat. Aquí se describe la arquitectura, tecnologías, estructura, flujos, endpoints, convenciones y consideraciones técnicas que toda modificación debe respetar.
+
 
 ## Descripción General
 **EnglisChat** es una aplicación web para aprender inglés con inteligencia artificial. Los usuarios pueden enviar mensajes, corregir su gramática y recibir respuestas inteligentes usando el modelo **Llama3** ejecutándose localmente.
 
-## Arquitectura del Sistema
+
+## Arquitectura y Tecnologías
+
 
 ### Stack Tecnológico
-- **Frontend**: /app/client - React + TypeScript + Vite + TailwindCSS
-- **Backend**: /app/backend FastAPI (Python) + Pydantic + WebSockets
-- **IA/LLM**: Ollama + Llama3 (ejecutándose localmente)
-- **Orquestación**: n8n (para workflows automatizados)
+- **Frontend**: `/app/client` - React 19.1, TypeScript, Vite 7, TailwindCSS 4.1
+- **Backend**: `/app/backend` - FastAPI (Python 3.12), Pydantic, WebSockets
+- **IA/LLM**: Ollama + Llama3 (local)
+- **Orquestación**: n8n (workflows automatizados)
 - **Contenedores**: Docker + Docker Compose
-- **Desarrollo**: VS Code + ESLint + Hot Reload
+- **Desarrollo**: VS Code, ESLint, Hot Reload
+
 
 ### Servicios Docker
 1. **client** - Frontend React (Puerto 5173)
-2. **backend** - API FastAPI (Puerto 3000)  
+2. **backend** - API FastAPI (Puerto 3000)
 3. **n8n** - Plataforma de automatización (Puerto 5678)
 4. **ollama** - Servidor de IA local (Puerto 11434)
+
 
 ## Estructura del Proyecto
 
@@ -41,6 +49,7 @@ n8n-project/
 └── setup.sh           # Script de inicialización
 ```
 
+
 ## Funcionalidades Principales
 
 ### 1. Corrección de Mensajes
@@ -56,6 +65,7 @@ n8n-project/
 - **Tecnología**: WebSockets para chat instantáneo
 - **Estado**: Conexión persistente cliente-servidor
 
+
 ## Flujo de Datos
 
 1. **Usuario** envía mensaje desde el frontend
@@ -65,6 +75,7 @@ n8n-project/
 5. **Ollama** ejecuta Llama3 y devuelve la respuesta
 6. **Backend** envía respuesta via WebSocket al cliente
 7. **Frontend** muestra la respuesta en tiempo real
+
 
 ## APIs y Endpoints
 
@@ -107,6 +118,7 @@ POST /api/v1/chat
 }
 ```
 
+
 ## Configuración del Entorno
 
 ### Variables de Entorno
@@ -118,6 +130,7 @@ POST /api/v1/chat
 - **3000**: Backend (FastAPI)
 - **5678**: n8n (Automatización)
 - **11434**: Ollama (IA/LLM)
+
 
 ## Comandos de Desarrollo
 
@@ -139,7 +152,19 @@ cd app/backend && uvicorn main:app --reload
 cd app/client && npm run dev
 ```
 
-## Consideraciones Técnicas
+
+## Consideraciones Técnicas y Reglas para la IA
+
+### Convenciones y Reglas Generales
+- Mantener la estructura de carpetas y nombres de archivos según el esquema actual.
+- Usar siempre rutas relativas o alias definidos en `tsconfig` y `vite.config.ts` para imports en frontend.
+- Los archivos de solo tipos/interfaces deben tener extensión `.ts`, no `.tsx`.
+- Los endpoints y rutas deben seguir el patrón REST y WebSocket documentado.
+- No modificar la configuración de puertos ni rutas de servicios sin justificación.
+- Toda nueva funcionalidad debe estar documentada en este archivo.
+- No eliminar ni sobrescribir archivos de configuración esenciales (`docker-compose.yml`, `requirements.txt`, etc).
+- Mantener la compatibilidad con Docker Compose para levantar todo el stack.
+- Validar que los cambios no rompan la comunicación entre frontend, backend y Ollama.
 
 ### Seguridad
 - Validación de longitud de mensajes (máx. 1000 caracteres)
@@ -156,7 +181,8 @@ cd app/client && npm run dev
 - Backend stateless (FastAPI)
 - Frontend SPA optimizado
 
-## Próximos Pasos
+
+## Próximos Pasos y Mejoras
 1. Implementar interfaz de chat completa
 2. Agregar historial de conversaciones
 3. Mejorar prompts para corrección y respuesta
