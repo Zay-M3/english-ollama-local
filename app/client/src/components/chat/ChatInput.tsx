@@ -1,4 +1,5 @@
 import type { ChatInputProps } from "@chatutils/chatform";
+import { Button } from "@ui/Button";
 
 export function ChatInput({ value , onChange, onSend }: ChatInputProps) {
   return (
@@ -11,12 +12,11 @@ export function ChatInput({ value , onChange, onSend }: ChatInputProps) {
         onChange={onChange}
         onKeyDown={e => e.key === "Enter" && onSend()}
       />
-      <button
-        className="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 transition"
+      <Button
+        label="Enviar"
         onClick={onSend}
-      >
-        Enviar
-      </button>
+        className="px-6 py-2 rounded-full"
+      />
     </div>
   );
 }

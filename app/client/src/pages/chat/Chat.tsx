@@ -5,7 +5,7 @@ import { ChatInput } from "@chatcomponents/ChatInput";
 
 function Chat() {
   const [messages, setMessages] = useState([
-    { text: "¡Bienvenido a EnglisChat! ¿En qué puedo ayudarte hoy?", isUser: false }
+    { text: "Welcome to EnglisChat! How can I help you today?", isUser: false }
   ]);
   const [input, setInput] = useState("");
 
