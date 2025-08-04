@@ -1,4 +1,5 @@
 import type { ChatInputProps } from "@chatutils/chatform";
+import { Button } from "@ui/Button";
 
 export function ChatInput({ value , onChange, onSend }: ChatInputProps) {
   return (
@@ -6,17 +7,16 @@ export function ChatInput({ value , onChange, onSend }: ChatInputProps) {
       <input
         className="flex-1 px-4 py-2 border rounded-full focus:outline-none focus:ring-2 focus:ring-blue-400"
         type="text"
-        placeholder="Escribe tu mensaje..."
+        placeholder="Type your message..."
         value={value}
         onChange={onChange}
         onKeyDown={e => e.key === "Enter" && onSend()}
       />
-      <button
-        className="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 transition"
+      <Button
+        label="Send"
         onClick={onSend}
-      >
-        Enviar
-      </button>
+        className="px-6 py-2 rounded-full"
+      />
     </div>
   );
 }
