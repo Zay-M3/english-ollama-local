@@ -1,7 +1,7 @@
 import type { ChatMessageProps } from "@chatutils/chatform";
 
 
-export function ChatMessage({ message, isUser }: ChatMessageProps) {
+export function ChatMessage({ message, isUser, parpadeo }: ChatMessageProps) {
   return (
     <div className={`flex ${isUser ? "justify-end" : "justify-start"} mb-2`}>
       <div
@@ -9,7 +9,10 @@ export function ChatMessage({ message, isUser }: ChatMessageProps) {
           ${isUser
             ? "bg-blue-500 text-white rounded-br-none"
             : "bg-gray-200 text-gray-900 rounded-bl-none"
-          }`}
+          }
+          ${parpadeo ? "animate-pulse" : ""}
+          `}
+          
       >
         {message}
       </div>

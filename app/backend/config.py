@@ -1,1 +1,1 @@
-OLLAMA_API_URL = "http://localhost:11434/api/generate"
+OLLAMA_API_URL = "http://ollama:11434/api/generate"
