@@ -28,6 +28,11 @@ services:
     depends_on:
       - ollama
   n8n:
+    deploy:
+      resources:
+        limits:
+          memory: 4G
+          cpus: '2.0'
     image:
       n8nio/n8n
     ports:
@@ -44,6 +49,19 @@ services:
       ollama/ollama
     ports:
       - "11434:11434"
+    environment:
+      - OLLAMA_CONTEXT_LENGTH=8192
+      - OLLAMA_LOAD_TIMEOUT=10m
+      - OLLAMA_KEEP_ALIVE=10m
+      - OLLAMA_NUM_PARALLEL=2
+    deploy:
+      resources:
+        limits:
+          memory: 6G
+          cpus: '4.0'
+        reservations:
+          memory: 4G
+          cpus: '2.0'
     volumes:
       - ollama-data:/root/.ollama
 
