@@ -25,7 +25,10 @@ function Chat() {
     setChatMessages(prev => [...prev, { text: input, isUser: true }]);
     setInput("");
     setSliderVisible(true);
-    sendMessage({ action: "response", message: input });
+    for (const action of ["response", "fix"]) {
+      sendMessage({ action, message: input });
+    }
+
   };
 
   const handleCall = async () => {
@@ -51,13 +54,11 @@ function Chat() {
   }, []);
 
   useEffect(() => {
-
     if (messages.length > lastMessageIndex.current) {
       const newMessages = messages.slice(lastMessageIndex.current);
       let newResponses = 0;
       newMessages.forEach((msg) => {
         const parsedMsg = JSON.parse(msg);
-        
         setChatMessages((prev) => [
           ...prev,
           { text: parsedMsg.content, isUser: false },
