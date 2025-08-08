@@ -5,6 +5,7 @@ fix_message = {
     "type": "fix",
     'original' : str,
     'content' : str,
+    'fixmessage': bool,
 }
 
 
@@ -29,6 +30,7 @@ class FixMessageService():
         return {
             "type": "fix",
             "original": self.message, 
-            "content": fixed
+            "content": fixed,
+            "fixmessage" : True
         }
     

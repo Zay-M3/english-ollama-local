@@ -9,4 +9,5 @@ export interface ChatMessageProps {
   message: React.ReactNode;
   isUser: boolean;
   parpadeo?: boolean;
+  fixmessage: boolean;
 }
