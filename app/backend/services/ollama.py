@@ -28,7 +28,7 @@ async def ask_ollama(prompt:str) -> str:
 
 # ask_llama para corregir mensajes
 async def ask_llama_fix(message: str) -> str:
-    prompt = f'Friendly English teacher: Spot grammar or word mistakes in "{message}", explain simply, and show the fun corrected version. If perfect, say "Looks great!". Max 15 words.'
+    prompt = f'Correct any grammar or word mistakes in "{message}". If perfect, reply "Looks great!". Max 12 words.'
     max_attempts = 3
     for attempt in range(max_attempts):
         async with ollama_semaphore:
