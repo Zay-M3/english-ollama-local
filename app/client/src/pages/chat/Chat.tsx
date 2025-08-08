@@ -19,13 +19,15 @@ function Chat() {
   const [chargeChat, setChargeChat] = useState(true);
 
   const lastMessageIndex = useRef(0);
+  const responseRef = useRef(0)
 
   const handleSend = () => {
     if (input.trim() === "") return;
     setChatMessages(prev => [...prev, { text: input, isUser: true, parpadeo : false, fixmessage : false }]);
     setInput("");
+    responseRef.current = 2
+    setSliderVisible(true); 
     for (const action of ["response", "fix"]) {
-      setSliderVisible(true);
       sendMessage({ action, message: input });
     }
   };
@@ -62,6 +64,7 @@ function Chat() {
           ...prev,
           { text: parsedMsg.content, isUser: false, parpadeo : false, fixmessage : parsedMsg.fixmessage },
         ]);
+        if (responseRef.current > 0 && (parsedMsg.type === "response" || parsedMsg.type === "fix")) { responseRef.current--; if (responseRef.current === 0) setSliderVisible(false);}
       });
       lastMessageIndex.current = messages.length;
     }
