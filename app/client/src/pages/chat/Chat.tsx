@@ -8,7 +8,7 @@ import { useRef, useEffect } from "react";
 import Chargechat from "@ui/Chargechat";
 
 function Chat() {
-   const { messages, sendMessage } = useWebSocket("ws://localhost:3000/ws/chat");
+   const { messages, sendMessage } = useWebSocket(import.meta.env.VITE_WS_URL);
 
   const [chatMessages, setChatMessages] = useState([
     { text: "Welcome to EnglisChat! How can I help you day?", isUser: false, parpadeo:false, fixmessage : false }
@@ -34,7 +34,7 @@ function Chat() {
 
   const handleCall = async () => {
     try {
-      await fetch("http://localhost:3000/api/v1/chat", {
+      await fetch(import.meta.env.VITE_API_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ prompt: "How are you?"})
