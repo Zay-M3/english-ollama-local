@@ -1,6 +1,8 @@
+/// <reference types="vitest" />
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
+
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
@@ -14,6 +16,10 @@ export default defineConfig({
       '@pages': '/src/pages',
       '@ui': '/src/components/ui',
     }
+  },
+  test: {
+    globals: true,
+    environment: 'happy-dom',
   },
   server: {
     host: true,
