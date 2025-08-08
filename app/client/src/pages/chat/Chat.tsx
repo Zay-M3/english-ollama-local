@@ -19,16 +19,17 @@ function Chat() {
   const [chargeChat, setChargeChat] = useState(true);
 
   const lastMessageIndex = useRef(0);
+  const responseRef = useRef(0)
 
   const handleSend = () => {
     if (input.trim() === "") return;
     setChatMessages(prev => [...prev, { text: input, isUser: true, parpadeo : false, fixmessage : false }]);
     setInput("");
-    setSliderVisible(true);
+    responseRef.current = 2
+    setSliderVisible(true); 
     for (const action of ["response", "fix"]) {
       sendMessage({ action, message: input });
     }
-
   };
 
   const handleCall = async () => {
@@ -54,20 +55,19 @@ function Chat() {
   }, []);
 
   useEffect(() => {
-    if (messages.length > lastMessageIndex.current) {
+    const diff = messages.length - lastMessageIndex.current;
+    if (diff > 0) {
       const newMessages = messages.slice(lastMessageIndex.current);
-      let newResponses = 0;
       newMessages.forEach((msg) => {
         const parsedMsg = JSON.parse(msg);
         setChatMessages((prev) => [
           ...prev,
           { text: parsedMsg.content, isUser: false, parpadeo : false, fixmessage : parsedMsg.fixmessage },
         ]);
-        newResponses += 1;
+        if (responseRef.current > 0 && (parsedMsg.type === "response" || parsedMsg.type === "fix")) { responseRef.current--; if (responseRef.current === 0) setSliderVisible(false);}
       });
       lastMessageIndex.current = messages.length;
-      if (newResponses == 1){setSliderVisible(false)}
-    } 
+    }
   }, [messages]);
 
   return (
