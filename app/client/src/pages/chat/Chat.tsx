@@ -11,7 +11,7 @@ function Chat() {
    const { messages, sendMessage } = useWebSocket("ws://localhost:3000/ws/chat");
 
   const [chatMessages, setChatMessages] = useState([
-    { text: "Welcome to EnglisChat! How can I help you today?", isUser: false }
+    { text: "Welcome to EnglisChat! How can I help you day?", isUser: false, parpadeo:false, fixmessage : false }
   ]);
 
   const [input, setInput] = useState("");
@@ -22,7 +22,7 @@ function Chat() {
 
   const handleSend = () => {
     if (input.trim() === "") return;
-    setChatMessages(prev => [...prev, { text: input, isUser: true }]);
+    setChatMessages(prev => [...prev, { text: input, isUser: true, parpadeo : false, fixmessage : false }]);
     setInput("");
     setSliderVisible(true);
     for (const action of ["response", "fix"]) {
@@ -61,14 +61,13 @@ function Chat() {
         const parsedMsg = JSON.parse(msg);
         setChatMessages((prev) => [
           ...prev,
-          { text: parsedMsg.content, isUser: false },
+          { text: parsedMsg.content, isUser: false, parpadeo : false, fixmessage : parsedMsg.fixmessage },
         ]);
         newResponses += 1;
-      
       });
       lastMessageIndex.current = messages.length;
-      setSliderVisible(false);
-    }
+      if (newResponses == 1){setSliderVisible(false)}
+    } 
   }, [messages]);
 
   return (
@@ -77,7 +76,7 @@ function Chat() {
         <ChatHeader />
         <div className="flex-1 overflow-y-auto p-4 space-y-2 bg-gray-50">
           {chargeChat ? <Chargechat /> : chatMessages.map((msg, idx) => (
-            <ChatMessage key={idx} message={msg.text} isUser={msg.isUser} />
+            <ChatMessage key={idx} message={msg.text} isUser={msg.isUser} fixmessage={msg.fixmessage} />
           ))}
           {sliderVisible && <SliderChat />}
         </div>

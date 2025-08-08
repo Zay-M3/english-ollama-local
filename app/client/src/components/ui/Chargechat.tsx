@@ -20,7 +20,7 @@ const Chargechat = () => {
     <>
         {messages.map((msg, index) => (
           <div key={index} >
-            <ChatMessage message={<span className="invisible">{msg.text}</span>} isUser={msg.isUser} parpadeo={true} />
+            <ChatMessage message={<span className="invisible">{msg.text}</span>} isUser={msg.isUser} parpadeo={true} fixmessage={false} />
           </div>
         ))}
     </>

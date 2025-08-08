@@ -4,6 +4,7 @@ message_response = {
     "type": "response",
     'original': str,
     'content': str,
+    'fixmessage': bool,
 }
 
 class ResponseMessageService():
@@ -25,5 +26,6 @@ class ResponseMessageService():
         return {
             "type": "response",
             "original": self.message,
-            "content": response
+            "content": response,
+            "fixmessage": False,
         }
