@@ -9,6 +9,8 @@ services:
       - "5173:5173"
     environment:
       - TZ=America/Bogota #Puedes cambiar la zona horaria si es necesario
+      - VITE_WS_URL=ws://backend:3000/ws/chat
+      - VITE_API_URL=http://backend:3000/api/v1
     volumes:
       - ./app/client:/app
       - /app/node_modules
