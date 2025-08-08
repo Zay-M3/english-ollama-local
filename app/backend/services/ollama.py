@@ -2,7 +2,7 @@ import httpx
 from config import OLLAMA_API_URL
 import asyncio
 
-ollama_semaphore = asyncio.Semaphore(1)  # Limit concurrent requests to 1
+ollama_semaphore = asyncio.Semaphore(1) 
 
 async def ask_ollama(prompt:str) -> str:
     async with ollama_semaphore:

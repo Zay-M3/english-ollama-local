@@ -133,6 +133,11 @@ cmd_clean() {
   esac
 }
 
+cmd_test(){
+  dc exec -T backend pytest -v
+  dc exec -T client npm run test
+}
+
 cmd_logs() {
   # Logs por servicio: ./setup.sh logs <service> [-f]
   if [[ $# -lt 1 ]]; then
@@ -208,6 +213,9 @@ main() {
       ;;
     logs)
       cmd_logs "$@"
+      ;;
+    test)
+      cmd_test
       ;;
     status)
       cmd_status
