@@ -40,9 +40,9 @@ async def ask_llama_fix(message: str) -> str:
                         "prompt": prompt,
                         'stream': False,
                         'options': {
-                            'temperature': 0.3,
+                            'temperature': 0.2,
                             'top_p': 0.9,
-                            'max_tokens': 60,
+                            'max_tokens': 35,
                         }
                         },
                         timeout = 8 + (attempt * 3)
@@ -67,7 +67,7 @@ async def ask_llama_fix(message: str) -> str:
 
 # ask_llama_response para responder al mensaje enviado 
 async def ask_llama_response(message: str) -> str:
-    prompt = f'Reply to "{message}" with a fun, creative answer (max 15 words). Ask a playful question or invite the user to keep chatting.'
+    prompt = f'Answer "{message}" in a fun way (max 15 words). End with a playful question'
     max_attempts = 3
     for attempt in range(max_attempts):
         async with ollama_semaphore:
@@ -80,9 +80,9 @@ async def ask_llama_response(message: str) -> str:
                         'stream': False,
                         
                         'options': {
-                            'temperature': 0.3,
+                            'temperature': 0.2,
                             'top_p': 0.9,
-                            'max_tokens': 60,
+                            'max_tokens': 35,
                         }
                         },
                         timeout = 8 + (attempt * 3) 

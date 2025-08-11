@@ -71,8 +71,8 @@ function Chat() {
   }, [messages]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-white flex items-center justify-center">
-      <div className="w-full max-w-md h-[600px] flex flex-col rounded-xl shadow-lg bg-white border">
+    <div className="h-full w-full bg-gradient-to-br from-blue-50 to-white flex items-center justify-center">
+      <div className="w-full h-full flex flex-col rounded-xl shadow-lg bg-white border">
         <ChatHeader />
         <div className="flex-1 overflow-y-auto p-4 space-y-2 bg-gray-50">
           {chargeChat ? <Chargechat /> : chatMessages.map((msg, idx) => (
