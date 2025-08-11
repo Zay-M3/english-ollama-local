@@ -1,7 +1,6 @@
 import Chat from '@pages/chat/Chat';
 import { Card } from  "../../components/sidemenu/Card"
 
-
 export default function Menu() {
   return (
     <div className="min-h-screen w-full bg-gradient-to-br from-slate-50 via-white to-blue-50 flex">
@@ -25,18 +24,34 @@ export default function Menu() {
           </section>
           <aside className="hidden lg:flex flex-col gap-4">
             <Card
-            title="Tip"
-            text='Usa promts cortos y precisos, promts muy largo o complicados pueden tar mucho o fallar'
-            color='blue'
-            two_color='indigo'/>
+              title="Tip"
+              text="Usa prompts cortos y precisos, prompts muy largos o complicados pueden tardar mucho o fallar."
+              color="blue"
+            />
             <Card
-            title="Modelo Mistral"
-            text="Mistral es un modelo de IA rápido y eficiente, ideal para correcciones y respuestas en inglés. Funciona localmente, sin enviar tus datos a la nube."
-            color='green'
-            two_color='indigo'/>
+              title="Modelo Mistral"
+              text="Mistral es un modelo de IA rápido y eficiente, ideal para correcciones y respuestas en inglés. Funciona localmente, sin enviar tus datos a la nube."
+              color="green"
+            />
+            <Card
+              title="¿Cómo usar el chat?"
+              text="Escribe tu frase en inglés y recibirás corrección y respuesta divertida."
+              color="gray"
+            />
+            <Card
+              title="Privacidad"
+              text="Tus mensajes no salen de tu equipo. Todo el procesamiento es local."
+              color="yellow"
+            />
+            <Card
+              title="Próximamente"
+              text="- Estadísticas de progreso\n- Modo conversación larga\n- Personalización de nivel"
+              color="pink"
+            />
           </aside>
         </div>
       </main>
     </div>
   );
 }
+
