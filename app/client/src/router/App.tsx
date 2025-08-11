@@ -1,5 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
-import  Chat from "@pages/chat/Chat";
+import  Menu from "@pages/menu/Menu";
 import Layout from "../layout/Layout";
 import Home from "../layout/home/Home";
 
@@ -9,7 +9,7 @@ export const router = createBrowserRouter([
     element: <Layout />,
     children: [
       { index: true, element: <Home /> },
-      { path: "chat", element: <Chat /> }
+      { path: "chat", element: <Menu /> }
     ]
   },
 ]);

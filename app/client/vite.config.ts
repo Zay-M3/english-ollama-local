@@ -15,6 +15,7 @@ export default defineConfig({
       '@chatutils': '/src/utils/chat',
       '@pages': '/src/pages',
       '@ui': '/src/components/ui',
+      '@components' : 'src/components'
     }
   },
   test: {
