@@ -187,7 +187,6 @@ No soy experto en ML/AI, solo quería que funcionara rápido en mi laptop sin GP
 - [ ] Métricas de performance
 - [ ] Deploy con Traefik
 - [ ] Conversation history
-- [ ] Configuración de prompts desde UI
 
 ---
 
