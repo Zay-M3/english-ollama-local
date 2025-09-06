@@ -19,10 +19,10 @@ dc() {
 print_urls() {
   echo
   echo "Servicios:"
-  echo "- n8n:     http://localhost:5678"
+  # echo "- n8n:     http://localhost:5678"
   echo "- client:  http://localhost:5173"
   echo "- backend: http://localhost:3000"
-  echo "- ollama:  http://localhost:11434"
+  # echo "- ollama:  http://localhost:11434"
   echo
 }
 
